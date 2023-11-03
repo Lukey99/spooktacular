@@ -153,7 +153,7 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 4rem;
+      gap: 3rem;
       img {
         width: 6.25rem !important;
         height: 6.25rem !important;
