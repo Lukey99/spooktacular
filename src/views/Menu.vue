@@ -8,7 +8,7 @@
     </div>
     <div v-for="(item, index) in items" :key="index" class="sections">
       <button class="button-section" v-on:click="onClick(item)">
-        <img v-if="index = 0" :src="getCharacterPic" alt="image" />
+        <img v-if="index === 0" :src="getCharacterPic" alt="image" />
         <img v-else :src="item.img" alt="image" />
         <span>{{ item.title }}</span>
       </button>
@@ -114,13 +114,12 @@ export default {
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
   position: relative;
   gap: 1.25rem;
   overflow: hidden;
   .title {
-    position: absolute;
-    top: 3.5rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
     span {
       background: #105fb8;
       width: auto;
