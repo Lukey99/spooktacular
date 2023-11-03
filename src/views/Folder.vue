@@ -73,7 +73,7 @@ export default {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
-    bottom: 4rem;
+    bottom: -5rem;
     button{
         width: 10rem;
         padding: 0.75rem 0;

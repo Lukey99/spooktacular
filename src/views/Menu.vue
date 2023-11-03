@@ -52,11 +52,6 @@ export default {
           path: "/folder",
         },
         {
-          title: "Dossiers publiques",
-          img: new URL("../assets/home/2.png", import.meta.url),
-          path: "/public",
-        },
-        {
           title: "Mes indices",
           img: new URL("../assets/home/3.png", import.meta.url),
           path: "/clues",
