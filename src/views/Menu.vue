@@ -7,25 +7,11 @@
       <span>Mes fichiers</span>
     </div>
     <div v-for="(item, index) in items" :key="index" class="sections">
-      <button
-        v-if="index !== 1"
-        class="button-section"
-        v-on:click="onClick(item)"
-      >
+      <button class="button-section" v-on:click="onClick(item)">
         <img v-if="index === 0" :src="getCharacterPic" alt="image" />
         <img v-else :src="item.img" alt="image" />
         <span>{{ item.title }}</span>
       </button>
-      <a
-        href="../assets/DossierEnqueteur.png"
-        download="../assets/DossierEnqueteur.png"
-        target="_blank"
-        v-else
-      >
-        <img v-if="index === 0" :src="getCharacterPic" alt="image" />
-        <img v-else :src="item.img" alt="image" />
-        <span>{{ item.title }}</span></a
-      >
     </div>
     <div v-if="getShowCharacter" class="backdrop" v-on:click="hide">
       <img :src="getCharacterFolder" alt="characters" />
@@ -34,6 +20,7 @@
 </template>
 
 <script>
+import DossierEnqueteur from "../assets/DossierEnqueteur.pdf";
 import { USER } from "../constants";
 
 export default {
@@ -54,6 +41,7 @@ export default {
   },
   data() {
     return {
+      dossierEnqueteur: DossierEnqueteur,
       userContainer: USER,
       currentUser: "",
       items: [
@@ -67,8 +55,8 @@ export default {
           title: "Dossier d'enquête",
           img: new URL("../assets/home/1.png", import.meta.url),
           action: () => {
-            this.downloadFile();
-          },
+            this.getDossier()
+          }
         },
         {
           title: "Mes indices",
@@ -90,9 +78,10 @@ export default {
       if (!!item?.action) item.action();
       else this.$router.push(item.path);
     },
-    downloadFile() {
-      window.open("../assets/DossierEnqueteur.png", "_blank");
-    },
+    getDossier(){
+      const url = this.userContainer.find((user) => user.name === this.currentUser).url
+      window.open(url, "_blank");
+    }
   },
   mounted() {
     this.currentUser = document.cookie.split("=")[1];

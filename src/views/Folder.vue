@@ -1,25 +1,18 @@
 <template>
   <div class="folder">
     <button class="back-menu" v-on:click="onBack()">← Menu</button>
-    <div
-      v-for="(image, index) in imageContainer"
-      :key="index"
-      class="caroussel"
-    >
-      <img v-if="index === nbPhoto" :src="image" alt="image" />
-    </div>
-    <div class="button-container">
-        <button :disabled="nbPhoto === 0" v-on:click="previousPic()">Précédent</button>
-        <button :disabled="nbPhoto === 5" v-on:click="nextPic()">Suivant</button>
-    </div>
+    <embed :src="dossierEnqueteur" type="application/x-google-chrome-pdf" javascript="allow">
   </div>
 </template>
 
 <script>
+import DossierEnqueteur from "../assets/DossierEnqueteur.pdf";
+
 export default {
   name: "Folder",
   data() {
     return {
+      dossierEnqueteur: DossierEnqueteur,
       imageContainer: [
         new URL("../assets/folder/1.png", import.meta.url),
         new URL("../assets/folder/2.png", import.meta.url),
