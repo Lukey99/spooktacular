@@ -47,7 +47,8 @@ export default{
                 return user.name === this.form.name && user.password === this.form.password
             })
             if(checkUser){
-                this.$router.push("/menu")
+                document.cookie = `user=${this.form.name}`
+                this.$router.push(`/menu?id=${this.form.name}`)
             } else {
                 alert("Honte à vous, vous vous êtes trompé !")
             }
@@ -138,8 +139,8 @@ export default{
     position: absolute;
     top: 0;
     left: 0;
-    width: auto;
-    height: 100vh;
+    width: 100vw;
+    height: auto;
     z-index: -1;
   }
 }
