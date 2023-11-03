@@ -89,17 +89,17 @@ export default{
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    margin-top: 14rem; 
     span:last-child {
       font-size: 1.5rem;
     }
   }
   .login-wrapper {
     width: 100%;
-    position: absolute;
-    bottom: 6rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 3rem;
     div {
       display: flex;
       flex-direction: column;
