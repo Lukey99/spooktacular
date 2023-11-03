@@ -90,7 +90,7 @@ export default{
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    margin-top: 14rem; 
+    margin-top: 20rem; 
     span:last-child {
       font-size: 1.5rem;
     }

@@ -116,7 +116,6 @@ export default {
   flex-direction: column;
   position: relative;
   gap: 1.25rem;
-  overflow: hidden;
   .title {
     margin-top: 3rem;
     margin-bottom: 2rem;
