@@ -24,7 +24,7 @@
         <button class="log-in" v-on:click="onClick()">se connecter</button>
       </div>
     </div>
-    <img src="../assets/Stickers Login.PNG" alt="decoration" />
+    <img src="../assets/StickersLogin.png" alt="decoration" />
   </div>
 </template>
 
