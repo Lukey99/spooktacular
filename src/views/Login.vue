@@ -46,11 +46,10 @@ export default{
             const checkUser = this.userContainer.find((user) => {
                 return user.name === this.form.name && user.password === this.form.password
             })
-            console.log(this.userContainer[0])
             if(checkUser){
-                alert("Ok")
+                this.$router.push("/menu")
             } else {
-                alert("NOOOOON")
+                alert("Honte à vous, vous vous êtes trompé !")
             }
         }
     }
