@@ -7,11 +7,25 @@
       <span>Mes fichiers</span>
     </div>
     <div v-for="(item, index) in items" :key="index" class="sections">
-      <button class="button-section" v-on:click="onClick(item)">
+      <button
+        v-if="index !== 1"
+        class="button-section"
+        v-on:click="onClick(item)"
+      >
         <img v-if="index === 0" :src="getCharacterPic" alt="image" />
         <img v-else :src="item.img" alt="image" />
         <span>{{ item.title }}</span>
       </button>
+      <a
+        href="../assets/DossierEnqueteur.png"
+        download="../assets/DossierEnqueteur.png"
+        target="_blank"
+        v-else
+      >
+        <img v-if="index === 0" :src="getCharacterPic" alt="image" />
+        <img v-else :src="item.img" alt="image" />
+        <span>{{ item.title }}</span></a
+      >
     </div>
     <div v-if="getShowCharacter" class="backdrop" v-on:click="hide">
       <img :src="getCharacterFolder" alt="characters" />
@@ -29,11 +43,14 @@ export default {
       return this.showCharacter;
     },
     getCharacterPic() {
-        return new URL(`../assets/pics/${this.currentUser}.jpg`, import.meta.url)
+      return new URL(`../assets/pics/${this.currentUser}.jpg`, import.meta.url);
     },
     getCharacterFolder() {
-        return new URL(`../assets/characters/${this.currentUser}.png`, import.meta.url)
-    }
+      return new URL(
+        `../assets/characters/${this.currentUser}.png`,
+        import.meta.url
+      );
+    },
   },
   data() {
     return {
@@ -49,7 +66,9 @@ export default {
         {
           title: "Dossier d'enquête",
           img: new URL("../assets/home/1.png", import.meta.url),
-          path: "/folder",
+          action: () => {
+            this.downloadFile();
+          },
         },
         {
           title: "Mes indices",
@@ -65,11 +84,14 @@ export default {
       this.showCharacter = true;
     },
     hide() {
-        this.showCharacter = false;
+      this.showCharacter = false;
     },
     onClick(item) {
       if (!!item?.action) item.action();
       else this.$router.push(item.path);
+    },
+    downloadFile() {
+      window.open("../assets/DossierEnqueteur.png", "_blank");
     },
   },
   mounted() {
@@ -95,7 +117,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  img{
+  img {
     margin-bottom: 8rem;
     width: 100%;
     height: auto;
@@ -139,7 +161,8 @@ export default {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    button {
+    button,
+    a {
       width: 85%;
       height: 8rem;
       border-radius: 1.5rem;
@@ -158,6 +181,7 @@ export default {
         width: 10rem;
         font-size: 1.75rem;
         text-align: start;
+        text-decoration: none;
       }
     }
   }
